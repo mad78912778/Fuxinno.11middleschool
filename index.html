@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+ <html lang="zh-CN">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>阜新市第十一中学中央通讯社 - 官方网站</title>
+     <style>
+         /* 全局样式重置 */
+         * {
+             margin: 0;
+             padding: 0;
+             box-sizing: border-box;
+         }
+         /* 基础样式 */
+         body {
+             font-family: '思源黑体', 'Roboto', sans-serif;
+             background-color: #F5F5F5;
+             color: #333;
+             line-height: 1.6;
+         }
+         /* 头部导航 */
+         header {
+             background-color: #B71C1C;
+             color: white;
+             padding: 1rem 0;
+             position: sticky;
+             top: 0;
+             z-index: 100;
+             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+             transition: background-color 0.3s ease;
+         }
+         .container {
+             width: 90%;
+             max-width: 1200px;
+             margin: 0 auto;
+         }
+         nav {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+         }
+         .logo {
+             font-size: 1.8rem;
+             font-weight: bold;
+             letter-spacing: 1px;
+         }
+         .nav-links {
+             display: flex;
+             gap: 2rem;
+             align-items: center; /* 垂直居中 */
+         }
+         .nav-links a {
+             color: white;
+             text-decoration: none;
+             font-weight: 500;
+             transition: color 0.3s ease;
+         }
+         .nav-links a:hover {
+             color: #FFC107;
+         }
+         /* 注册按钮样式 - 核心优化 */
+         .register-nav-btn {
+             background-color: white;
+             color: #B71C1C;
+             border: 2px solid white;
+             padding: 8px 20px;
+             border-radius: 5px;
+             font-weight: bold;
+             cursor: pointer;
+             transition: all 0.3s ease;
+             font-size: 1rem;
+         }
+         .register-nav-btn:hover {
+             background-color: #8B0000;
+             color: white;
+             border-color: #8B0000;
+             transform: scale(1.05); /* 悬停缩放 */
+         }
+         .register-nav-btn:active {
+             transform: scale(0.98); /* 点击缩放 */
+         }
+         /* 英雄区域 */
+         .hero {
+             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://img.icons8.com/fluency/96/000000/news.png');
+             background-size: contain;
+             background-position: center;
+             color: white;
+             text-align: center;
+             padding: 6rem 0;
+             border-radius: 8px;
+             margin: 2rem 0;
+         }
+         .hero h1 {
+             font-size: 3rem;
+             margin-bottom: 1rem;
+         }
+         .hero p {
+             font-size: 1.2rem;
+             opacity: 0.9;
+             margin-bottom: 2rem;
+           }
+         /* 首页注册按钮样式 - 英雄区 */
+         .hero-register-btn {
+             background-color: #B71C1C;
+             color: white;
+             border: 2px solid #B71C1C;
+             padding: 15px 30px;
+             border-radius: 8px;
+             font-size: 1.2rem;
+             font-weight: bold;
+             cursor: pointer;
+             transition: all 0.3s ease;
+             box-shadow: 0 4px 15px rgba(183, 28, 28, 0.4);
+         }
+         .hero-register-btn:hover {
+             background-color: #8B0000;
+             border-color: #8B0000;
+             transform: translateY(-3px); /* 悬停上移 */
+             box-shadow: 0 6px 20px rgba(139, 0, 0, 0.5);
+         }
+         .hero-register-btn:active {
+             transform: translateY(-1px);
+         }
+         /* 新闻卡片区域 */
+         .section-title {
+             text-align: center;
+             margin: 3rem 0 2rem;
+             color: #B71C1C;
+             font-size: 2rem;
+         }
+         .news-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+             gap: 2rem;
+             margin-bottom: 4rem;
+         }
+         .news-card {
+             background: white;
+             border-radius: 8px;
+             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+             overflow: hidden;
+             transition: transform 0.3s ease, box-shadow 0.3s ease;
+         }
+         .news-card:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+         }
+         .news-card img {
+             width: 100%;
+             height: 180px;
+             object-fit: cover;
+         }
+         .news-content {
+             padding: 1.5rem;
+         }
+         .news-content h3 {
+             margin-bottom: 0.5rem;
+             font-size: 1.3rem;
+         }
+         .news-content .date {
+             color: #777;
+             font-size: 0.85rem;
+             margin-bottom: 1rem;
+         }
+         .news-content p {
+             color: #555;
+             font-size: 0.95rem;
+         }
+         .read-more {
+             display: inline-block;
+             margin-top: 1rem;
+             color: #B71C1C;
+             text-decoration: none;
+             font-weight: bold;
+         }
+         /* 页脚 */
+         footer {
+             background-color: #333;
+             color: white;
+             text-align: center;
+             padding: 2rem 0;
+             margin-top: 2rem;
+         }
+         .footer-links {
+             display: flex;
+             justify-content: center;
+             gap: 1.5rem;
+             margin-bottom: 1rem;
+         }
+         .footer-links a {
+             color: #ccc;
+             text-decoration: none;
+         }
+         .footer-links a:hover {
+             color: white;
+         }
+         /* 响应式调整 */
+         @media (max-width: 768px) {
+             .nav-links {
+                 gap: 1rem;
+               }
+             .hero h1 {
+                 font-size: 2.2rem;
+             }
+             .section-title {
+                 font-size: 1.8rem;
+             }
+         }
+     </style>
+ </head>
+ <body>
+     <header>
+         <div class="container">
+             <nav>
+                 <div class="logo">阜新十一中中央通讯社</div>
+                 <div class="nav-links">
+                     <a href="#home">首页</a>
+                     <a href="#news">新闻中心</a>
+                     <a href="#media">多媒体</a>
+                     <a href="#about">关于我们</a>
+                     <a href="#contact">联系我们</a>
+                     <!-- 导航栏注册按钮 -->
+                     <button class="register-nav-btn" onclick="window.open('auth.html', '_blank')">注册账号</button>
+                 </div>
+             </nav>
+         </div>
+     </header>
+     <div class="container">
+         <section id="home" class="hero">
+             <h1>秉笔直书，直言不讳</h1>
+             <p>阜新市第十一中学中央通讯社官方平台 | 心怀祖国，放眼世界</p>
+             <!-- 英雄区注册按钮 -->
+             <button class="hero-register-btn" onclick="window.open('auth.html', '_blank')">立即加入通讯社</button>
+         </section>
+         <h2 class="section-title" id="news">热点新闻</h2>
+         <div class="news-grid">
+             <!-- 新闻卡片 1 -->
+             <div class="news-card">
+                 <img src="https://img.icons8.com/fluency/96/000000/school.png" alt="校园活动">
+                 <div class="news-content">
+                     <h3>十七班班长周x要求美方释放马杜罗</h3>
+                     <p class="date">2026-03-27</p>
+                     <p>就委内瑞拉总统尼古拉斯·马杜罗·莫罗斯（Nicolás Maduro Moros）纽约开庭一事...</p>
+                     <a href="#" class="read-more">查看详情 →</a>
+                 </div>
+             </div>
+             <!-- 新闻卡片 2 -->
+             <div class="news-card">
+                 <img src="https://img.icons8.com/fluency/96/000000/books.png" alt="学习活动">
+                 <div class="news-content">
+                     <h3>mad工作室开始编写新书“二佟传”</h3>
+                     <p class="date">2026-03-25</p>
+                     <p>让同学们在交流中感悟经典，提升阅读素养。</p>
+                     <a href="#" class="read-more">查看详情 →</a>
+                 </div>
+             </div>
+             <!-- 新闻卡片 3 -->
+             <div class="news-card">
+                 <img src="https://img.icons8.com/fluency/96/000000/idea.png" alt="创新活动">
+                 <div class="news-content">
+                     <h3>九班中央通讯社：就伊朗最高领导人阿里·哈梅内伊之死表示悲痛和愤懑</h3>
+                     <p class="date">2026-03-20</p>
+                     <p>伊朗最高领导人阿里·哈梅内伊于当地时间2月28日被美国刺杀。</p>
+                     <a href="#" class="read-more">查看详情 →</a>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <footer>
+         <div class="footer-links">
+             <a href="#">隐私政策</a>
+             <a href="#">投稿须知</a>
+             <a href="#">加入我们</a>
+             <a href="class 17no.11middleschool">官方邮箱</a>
+         </div>
+         <p>© 2026 阜新市第十一中学中央通讯社 版权所有</p>
+     </footer>
+     <script>
+         // 简单的交互示例：导航栏滚动变色
+         window.addEventListener('scroll', () => {
+             const header = document.querySelector('header');
+             if (window.scrollY > 50) {
+                 header.style.backgroundColor = '#8B0000';
+             } else {
+                 header.style.backgroundColor = '#B71C1C';
+             }
+         });
+     </script>
+ </body>
+ </html>
